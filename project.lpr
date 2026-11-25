@@ -140,6 +140,8 @@ begin
       end else
         WriteLn('Found 0 results');
     end;
+
+    writeln
   until done;
 
   filtered.Free
