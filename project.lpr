@@ -92,7 +92,10 @@ begin
         done := true
       else if prompt = '.starts' then
         SetSearchMode(SearchModeStartsWith)
-        { TODO: add the other two }
+      else if prompt = '.ends' then
+        SetSearchMode(SearchModeEndsWith)
+      else if prompt = '.contains' then
+        SetSearchMode(SearchModeContains)
       else
         writeln('Unknown command: ' + prompt);
     end else begin
