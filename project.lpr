@@ -80,8 +80,16 @@ begin
 
       { Filter by "starts with" }
 
+      {
       for s in words do
         if s.StartsWith(prompt) then
+          filtered.add(s);
+      }
+
+      { FIlter by "contains" }
+
+      for s in words do
+        if s.Contains(prompt) then
           filtered.add(s);
 
       if filtered.count > 0 then begin
