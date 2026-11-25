@@ -154,6 +154,7 @@ begin
   writeln(format('Loaded %d lines', [wordlist.Count]));
   writeln('Filter by: starts with');
   writeln('Type .exit to exit');
+  writeln(format('Length: 3+  |  Limit: %d', [SearchLimit]));
 
   searchMode := SearchModeStartsWith;
 
