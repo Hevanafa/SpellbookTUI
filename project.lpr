@@ -1,14 +1,14 @@
-program project;
+program SpellbookTUI;
 
 uses
-  SysUtils, Classes;
+  SysUtils, Classes, Math;
 
 const
   WordListFile = 'count_1w.txt';
   SearchLimit = 100;
   { ItemsPerRow = 6; }  { Unused for now }
 
-
+{ Global app state }
 var
   words: TStringList;
 
@@ -44,7 +44,7 @@ end;
 var
   filtered: TStringList;
   prompt, s: string;
-  a: longint;
+  a, limit: longint;
   done: boolean;
 begin
   writeln('Spellbook TUI - By Hevanafa (Nov 2026)');
@@ -91,30 +91,20 @@ begin
               'Found %d results (limited to %d):', [
               filtered.Count, SearchLimit
             ]));
-
-          s := '';
-
-          for a:=0 to SearchLimit - 1 do begin
-            if a < SearchLimit - 1 then
-              s := s + filtered[a] + '  |  '
-            else
-              s := s + filtered[a];
-          end;
-
-          writeln(s);
-        end else begin
+        end else
           writeln(format('Found %d results:', [filtered.Count]));
 
-          s := '';
+        s := '';
+        limit := min(filtered.Count - 1, SearchLimit - 1);
 
-          for a:=0 to filtered.Count - 1 do
-            if a < filtered.Count - 1 then
-              s := s + filtered[a] + '  |  '
-            else
-              s := s + filtered[a];
-
-          writeln(s);
+        for a:=0 to limit do begin
+          if a < limit then
+            s := s + filtered[a] + '  |  '
+          else
+            s := s + filtered[a];
         end;
+
+        writeln(s);
       end;
     end;
   until done;
