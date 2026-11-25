@@ -8,8 +8,15 @@ const
   SearchLimit = 100;
   { ItemsPerRow = 6; }  { Unused for now }
 
+type
+  TSearchMode = (
+    SearchModeStartsWith
+  );
+
 { Global app state }
+
 var
+  searchMode: TSearchMode;
   wordlist: TStringList;
 
 procedure LoadWordList;
@@ -128,6 +135,8 @@ begin
   writeln(format('Loaded %d lines', [wordlist.Count]));
   writeln('Filter by: starts with');
   writeln('Type .exit to exit');
+
+  searchMode := SearchModeStartsWith;
 
   MainLoop;
 
