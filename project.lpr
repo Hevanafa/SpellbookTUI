@@ -93,7 +93,7 @@ begin
     flush(stdout);
     readln(prompt);
 
-    prompt := trim(prompt);
+    prompt := lowercase(trim(prompt));
 
     if prompt.IsEmpty then continue;
 
