@@ -62,11 +62,13 @@ begin
   done := false;
 
   repeat
-    write('> ');
+    write('spellbook> ');
     flush(stdout);
     readln(prompt);
 
     prompt := trim(prompt);
+
+    if prompt.IsEmpty then continue;
 
     if prompt.StartsWith('.') then begin
       if prompt = '.exit' then
@@ -77,6 +79,7 @@ begin
       filtered.Clear;
 
       { Filter by "starts with" }
+
       for s in words do
         if s.StartsWith(prompt) then
           filtered.add(s);
