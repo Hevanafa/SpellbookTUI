@@ -41,24 +41,14 @@ begin
 end;
 
 
+procedure MainLoop;
 var
   filtered: TStringList;
   prompt, s: string;
   a, limit: longint;
   done: boolean;
 begin
-  writeln('Spellbook TUI - By Hevanafa (Nov 2026)');
-
-  LoadWordList;
-
   filtered := TStringList.create;
-
-  writeln(format('Loaded %d lines', [words.Count]));
-  writeln('Filter by: starts with');
-  writeln('Type .exit to exit');
-
-  { Begin prompt loop }
-
   done := false;
 
   repeat
@@ -125,7 +115,21 @@ begin
     end;
   until done;
 
-  filtered.Free;
+  filtered.Free
+end;
+
+
+begin
+  WriteLn('Spellbook TUI - By Hevanafa (Nov 2026)');
+
+  LoadWordList;
+
+  writeln(format('Loaded %d lines', [words.Count]));
+  writeln('Filter by: starts with');
+  writeln('Type .exit to exit');
+
+  MainLoop;
+
   words.Free;
 end.
 
