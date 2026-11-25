@@ -67,6 +67,16 @@ begin
   writeln
 end;
 
+procedure PrintHelpPage;
+begin
+  writeln('.help      lists all the available commands');
+
+  writeln('.starts    filter words starting with');
+  writeln('.contains  filter words containing');
+  writeln('.ends      filter words ending with');
+
+  writeln('.exit      exits this programme')
+end;
 
 procedure MainLoop;
 var
@@ -96,6 +106,8 @@ begin
         SetSearchMode(SearchModeEndsWith)
       else if prompt = '.contains' then
         SetSearchMode(SearchModeContains)
+      else if prompt = '.help' then
+        PrintHelpPage
       else
         writeln('Unknown command: ' + prompt);
     end else begin
@@ -155,7 +167,7 @@ begin
 
   writeln(format('Loaded %d lines', [wordlist.Count]));
   writeln('Filter by: starts with');
-  writeln('Type .exit to exit');
+  writeln('Type .help for available commands');
   writeln(format('Length: 3+  |  Limit: %d', [SearchLimit]));
 
   searchMode := SearchModeStartsWith;
