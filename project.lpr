@@ -10,7 +10,7 @@ const
 
 { Global app state }
 var
-  words: TStringList;
+  wordlist: TStringList;
 
 procedure LoadWordList;
 var
@@ -26,7 +26,7 @@ begin
   lines := TStringList.create;
   lines.LoadFromFile(WordListFile);
 
-  words := TStringList.create;
+  wordlist := TStringList.create;
 
   for line in lines do begin
     pair := line.Split(#9);
@@ -34,7 +34,7 @@ begin
     if (length(pair[0]) < 3)
       or (StrToInt64(pair[1]) < 1000000) then continue;
 
-    words.Add(pair[0]);
+    wordlist.Add(pair[0]);
   end;
 
   lines.Free
@@ -71,7 +71,7 @@ begin
       { Filter by "starts with" }
 
       {
-      for s in words do
+      for s in wordlist do
         if s.StartsWith(prompt) then
           filtered.add(s);
       }
@@ -79,14 +79,14 @@ begin
       { Filter by "contains" }
 
       {
-      for s in words do
+      for s in wordlist do
         if s.Contains(prompt) then
           filtered.add(s);
       }
 
       { Filter by "ends with" }
 
-      for s in words do
+      for s in wordlist do
         if s.EndsWith(prompt) then
           filtered.add(s);
 
@@ -111,7 +111,8 @@ begin
         end;
 
         writeln(s);
-      end;
+      end else
+        WriteLn('Found 0 results');
     end;
   until done;
 
@@ -124,12 +125,12 @@ begin
 
   LoadWordList;
 
-  writeln(format('Loaded %d lines', [words.Count]));
+  writeln(format('Loaded %d lines', [wordlist.Count]));
   writeln('Filter by: starts with');
   writeln('Type .exit to exit');
 
   MainLoop;
 
-  words.Free;
+  wordlist.Free;
 end.
 
