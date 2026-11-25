@@ -49,6 +49,24 @@ begin
   lines.Free
 end;
 
+procedure SetSearchMode(const value: TSearchMode);
+begin
+  searchMode := value;
+
+  write('Search mode has been changed to: ');
+
+  case value of
+    SearchModeStartsWith:
+      write('starts with');
+    SearchModeEndsWith:
+      write('ends with');
+    SearchModeContains:
+      write('contains');
+  end;
+
+  writeln
+end;
+
 
 procedure MainLoop;
 var
@@ -72,6 +90,9 @@ begin
     if prompt.StartsWith('.') then begin
       if prompt = '.exit' then
         done := true
+      else if prompt = '.starts' then
+        SetSearchMode(SearchModeStartsWith)
+        { TODO: add the other two }
       else
         writeln('Unknown command: ' + prompt);
     end else begin
