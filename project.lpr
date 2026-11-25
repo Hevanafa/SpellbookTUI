@@ -8,28 +8,25 @@ const
   SearchLimit = 100;
   { ItemsPerRow = 6; }  { Unused for now }
 
+
+var
+  words: TStringList;
+
+procedure LoadWordList;
 var
   lines: TStringList;
   line: string;
   pair: TStringArray;
-  words, filtered: TStringList;
-  prompt, s: string;
-  a: longint;
-  done: boolean;
 begin
-  writeln('Spellbook TUI - By Hevanafa (Nov 2026)');
   writeln(format('Loading word list %s...', [WordListFile]));
 
-  lines := TStringList.create;
-
   if not FileExists(WordListFile) then
-    raise TExceptionClass.Create('Couldn''t find the word list!');
+    raise Exception.Create('Couldn''t find the word list!');
 
-  { Begin load word list }
-
+  lines := TStringList.create;
   lines.LoadFromFile(WordListFile);
+
   words := TStringList.create;
-  filtered := TStringList.create;
 
   for line in lines do begin
     pair := line.Split(#9);
@@ -40,7 +37,21 @@ begin
     words.Add(pair[0]);
   end;
 
-  lines.Free;
+  lines.Free
+end;
+
+
+var
+  filtered: TStringList;
+  prompt, s: string;
+  a: longint;
+  done: boolean;
+begin
+  writeln('Spellbook TUI - By Hevanafa (Nov 2026)');
+
+  LoadWordList;
+
+  filtered := TStringList.create;
 
   writeln(format('Loaded %d lines', [words.Count]));
   writeln('Filter by: starts with');
@@ -104,5 +115,8 @@ begin
       end;
     end;
   until done;
+
+  filtered.Free;
+  words.Free;
 end.
 
