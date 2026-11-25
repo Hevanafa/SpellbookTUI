@@ -10,7 +10,9 @@ const
 
 type
   TSearchMode = (
-    SearchModeStartsWith
+    SearchModeStartsWith,
+    SearchModeEndsWith,
+    SearchModeContains
   );
 
 { Global app state }
@@ -75,27 +77,20 @@ begin
     end else begin
       filtered.Clear;
 
-      { Filter by "starts with" }
-
-      {
-      for s in wordlist do
-        if s.StartsWith(prompt) then
-          filtered.add(s);
-      }
-
-      { Filter by "contains" }
-
-      {
-      for s in wordlist do
-        if s.Contains(prompt) then
-          filtered.add(s);
-      }
-
-      { Filter by "ends with" }
-
-      for s in wordlist do
-        if s.EndsWith(prompt) then
-          filtered.add(s);
+      case searchMode of
+        SearchModeStartsWith:
+          for s in wordlist do
+            if s.StartsWith(prompt) then
+              filtered.add(s);
+        SearchModeEndsWith:
+          for s in wordlist do
+            if s.EndsWith(prompt) then
+              filtered.add(s);
+        SearchModeContains:
+          for s in wordlist do
+            if s.Contains(prompt) then
+              filtered.add(s);
+      end;
 
       if filtered.count > 0 then begin
         if filtered.count > SearchLimit then begin
