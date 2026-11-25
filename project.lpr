@@ -86,10 +86,18 @@ begin
           filtered.add(s);
       }
 
-      { FIlter by "contains" }
+      { Filter by "contains" }
 
+      {
       for s in words do
         if s.Contains(prompt) then
+          filtered.add(s);
+      }
+
+      { Filter by "ends with" }
+
+      for s in words do
+        if s.EndsWith(prompt) then
           filtered.add(s);
 
       if filtered.count > 0 then begin
