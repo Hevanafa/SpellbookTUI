@@ -1,7 +1,7 @@
 program SpellbookTUI;
 
 uses
-  SysUtils, Classes, Math;
+  SysUtils, Classes, Math, Crt;
 
 const
   WordListFile = 'count_1w.txt';
@@ -108,7 +108,10 @@ begin
         SetSearchMode(SearchModeContains)
       else if prompt = '.help' then
         PrintHelpPage
-      else
+      else if prompt = '.clear' then begin
+        ClrScr;
+        continue
+      end else
         writeln('Unknown command: ' + prompt);
     end else begin
       filtered.Clear;
