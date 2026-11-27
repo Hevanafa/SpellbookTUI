@@ -2,6 +2,8 @@
 
 A word search utility written in Free Pascal
 
+![preview](./preview.png)
+
 ## Building
 
 Since this app is mainly using the console/terminal, using either FPC itself or Lazarus can work
