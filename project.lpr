@@ -1,5 +1,8 @@
 program SpellbookTUI;
 
+{$Mode ObjFPC}
+{$H+}{$J-}
+
 uses
   SysUtils, Classes, Math, Crt, Windows;
 
