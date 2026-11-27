@@ -69,13 +69,15 @@ end;
 
 procedure PrintHelpPage;
 begin
-  writeln('.help      lists all the available commands');
+  writeln(
+    '.help      list all the available commands' + LineEnding +
+    '.clear     clear the screen' + LineEnding +
 
-  writeln('.starts    filter words starting with');
-  writeln('.contains  filter words containing');
-  writeln('.ends      filter words ending with');
+    '.starts    filter words starting with' + LineEnding +
+    '.contains  filter words containing' + LineEnding +
+    '.ends      filter words ending with' + LineEnding +
 
-  writeln('.exit      exits this programme')
+    '.exit      exit this programme');
 end;
 
 procedure MainLoop;
