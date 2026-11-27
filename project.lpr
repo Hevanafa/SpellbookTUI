@@ -37,8 +37,6 @@ begin
   lines := TStringList.create;
   lines.LoadFromFile(WordListFile);
 
-  wordlist := TStringList.create;
-
   for line in lines do begin
     pair := line.Split(#9);
 
@@ -173,6 +171,8 @@ end;
 
 begin
   WriteLn(format('%s v%s - By Hevanafa (Nov 2026)', [AppName, AppVersion]));
+
+  wordlist := TStringList.create;
 
   LoadWordList;
 
