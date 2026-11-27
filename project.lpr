@@ -4,14 +4,14 @@ program SpellbookTUI;
 {$H+}{$J-}
 
 uses
-  SysUtils, Classes, Math, Crt, Windows;
+  SysUtils, Classes, Math, Crt, Windows, StrUtils;
 
 const
   AppName = 'SpellbookTUI';
   AppVersion = '0.1';
   WordListFile = 'count_1w.txt';
   SearchLimit = 100;
-  { ItemsPerRow = 6; }  { Unused for now }
+  ItemsPerRow = 4;
 
 type
   TSearchMode = (
@@ -114,9 +114,10 @@ procedure MainLoop;
 var
   filtered: TStringList;
   prompt, s: string;
-  a, limit: longint;
+  a, padding, limit: longint;
   done: boolean;
   startHighlight, endHighlight: longint;
+  longest: longint;
 begin
   filtered := TStringList.create;
   done := false;
@@ -196,6 +197,12 @@ begin
         writeln(s);
         }
 
+        longest := 0;
+
+        for a:=0 to limit do
+          if longest < length(filtered[a]) then
+            longest := length(filtered[a]);
+
         for a:=0 to limit do begin
           startHighlight := pos(prompt, filtered[a]);
           endHighlight := startHighlight + length(prompt);
@@ -211,14 +218,21 @@ begin
           TextColor(white);
           write(copy(filtered[a], endHighlight));
 
+          {
           TextColor(DarkGray);
           if a < limit then
             write('  |  ');
+          }
+
+          if longest - length(filtered[a]) > 0 then
+            write(PadRight('', longest - length(filtered[a])));
         end;
 
         writeln
-      end else
+      end else begin
+        TextColor(LightGray);
         WriteLn('Found 0 results');
+      end;
     end;
 
     writeln
