@@ -170,6 +170,8 @@ begin
       end;
 
       if filtered.count > 0 then begin
+        TextColor(Brown);
+
         if filtered.count > SearchLimit then begin
           writeln(
             format(
@@ -200,7 +202,7 @@ begin
 
           if startHighlight > 1 then begin
             TextColor(White);
-            write(copy(filtered[a], 1, startHighlight));
+            write(copy(filtered[a], 1, startHighlight - 1));
           end;
 
           TextColor(LightGreen);
@@ -213,6 +215,8 @@ begin
           if a < limit then
             write('  |  ');
         end;
+
+        writeln
       end else
         WriteLn('Found 0 results');
     end;
