@@ -35,3 +35,11 @@ If you prefer to use the plain Free Pascal Compiler, you can use this command:
 ```powershell
 fpc "-oSpellbookTUI.exe" -O3 .\project.lpr
 ```
+
+## Acknowledgements
+
+SpellbookTUI uses the `count_1w.txt` word frequency list made available by Peter Norvig as supplementary material for his chapter "Natural Language Corpus Data" (2009)
+
+The word list is derived from the Google Web Trillion Word Corpus by Thorsten Brants and Alex Franz
+
+Source: [https://www.norvig.com/ngrams/](https://www.norvig.com/ngrams/)
