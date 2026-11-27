@@ -232,7 +232,8 @@ begin
             writeln;
         end;
 
-        writeln
+        if (limit + 1) mod ItemsPerRow > 0 then
+          writeln
       end else begin
         TextColor(LightGray);
         WriteLn('Found 0 results');
