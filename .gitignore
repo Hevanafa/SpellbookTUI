@@ -3,3 +3,5 @@ count_1w.txt
 *.exe
 *.lps
 *.dbg
+*.o
+*.obj
