@@ -5,3 +5,5 @@ count_1w.txt
 *.dbg
 *.o
 *.obj
+dist/
+builds/
