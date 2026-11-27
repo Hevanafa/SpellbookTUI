@@ -119,9 +119,12 @@ begin
   done := false;
 
   repeat
-    write('spellbook> ');
-    flush(stdout);
-    readln(prompt);
+    TextColor(LightGreen);
+    Write('spellbook> ');
+    Flush(stdout);
+
+    TextColor(white);
+    ReadLn(prompt);
 
     prompt := lowercase(trim(prompt));
 
