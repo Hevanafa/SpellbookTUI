@@ -4,6 +4,8 @@ uses
   SysUtils, Classes, Math, Crt;
 
 const
+  AppName = 'SpellbookTUI';
+  AppVersion = '0.1';
   WordListFile = 'count_1w.txt';
   SearchLimit = 100;
   { ItemsPerRow = 6; }  { Unused for now }
@@ -170,7 +172,7 @@ end;
 {$R *.res}
 
 begin
-  WriteLn('Spellbook TUI - By Hevanafa (Nov 2026)');
+  WriteLn(format('%s v%s - By Hevanafa (Nov 2026)', [AppName, AppVersion]));
 
   LoadWordList;
 
