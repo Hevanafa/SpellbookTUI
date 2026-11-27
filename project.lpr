@@ -12,6 +12,7 @@ const
   WordListFile = 'count_1w.txt';
   SearchLimit = 100;
   ItemsPerRow = 4;
+  ColumnGap = 2;
 
 type
   TSearchMode = (
@@ -224,8 +225,11 @@ begin
             write('  |  ');
           }
 
-          if longest - length(filtered[a]) > 0 then
-            write(PadRight('', longest - length(filtered[a])));
+          { if longest - length(filtered[a]) > 0 then }
+          write(PadRight('', longest - length(filtered[a]) + ColumnGap));
+
+          if a mod ItemsPerRow = ItemsPerRow - 1 then
+            writeln;
         end;
 
         writeln
