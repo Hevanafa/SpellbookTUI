@@ -70,13 +70,15 @@ end;
 procedure PrintHelpPage;
 begin
   writeln(
+    'Any input without a dot prefix triggers a search' + LineEnding +
+    LineEnding +
     '.help      list all the available commands' + LineEnding +
     '.clear     clear the screen' + LineEnding +
-
+    LineEnding +
     '.starts    search by prefix' + LineEnding +
     '.contains  search by substring' + LineEnding +
     '.ends      search by suffix' + LineEnding +
-
+    LineEnding +
     '.exit      exit this programme');
 end;
 
