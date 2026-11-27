@@ -95,7 +95,9 @@ end;
 
 procedure PrintHelpPage;
 begin
-  writeln(
+  TextColor(LightGray);
+
+  WriteLn(
     'Any input without a dot prefix triggers a search' + LineEnding +
     LineEnding +
     '.help      list all the available commands' + LineEnding +
@@ -126,7 +128,7 @@ begin
     TextColor(white);
     ReadLn(prompt);
 
-    prompt := lowercase(trim(prompt));
+    prompt := LowerCase(Trim(prompt));
 
     if prompt.IsEmpty then continue;
 
@@ -144,8 +146,10 @@ begin
       else if prompt = '.clear' then begin
         ClrScr;
         continue
-      end else
-        writeln('Unknown command: ' + prompt);
+      end else begin
+        TextColor(DarkGray);
+        WriteLn('Unknown command: ' + prompt);
+      end;
     end else begin
       filtered.Clear;
 
