@@ -116,6 +116,7 @@ var
   prompt, s: string;
   a, limit: longint;
   done: boolean;
+  startHighlight, endHighlight: longint;
 begin
   filtered := TStringList.create;
   done := false;
@@ -178,8 +179,10 @@ begin
         end else
           writeln(format('Found %d results:', [filtered.Count]));
 
-        s := '';
         limit := min(filtered.Count - 1, SearchLimit - 1);
+
+        {
+        s := '';
 
         for a:=0 to limit do begin
           if a < limit then
@@ -189,6 +192,27 @@ begin
         end;
 
         writeln(s);
+        }
+
+        for a:=0 to limit do begin
+          startHighlight := pos(prompt, filtered[a]);
+          endHighlight := startHighlight + length(prompt);
+
+          if startHighlight > 1 then begin
+            TextColor(White);
+            write(copy(filtered[a], 1, startHighlight));
+          end;
+
+          TextColor(LightGreen);
+          write(copy(filtered[a], startHighlight, length(prompt)));
+
+          TextColor(white);
+          write(copy(filtered[a], endHighlight));
+
+          TextColor(DarkGray);
+          if a < limit then
+            write('  |  ');
+        end;
       end else
         WriteLn('Found 0 results');
     end;
