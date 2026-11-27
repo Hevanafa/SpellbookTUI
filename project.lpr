@@ -237,9 +237,13 @@ begin
 
   LoadWordList;
 
-  writeln(format('Loaded %d lines', [wordlist.Count]));
-  writeln('Filter by: starts with');
+  TextColor(LightGreen);
+  writeln(format('Lexicon loaded: %d entries', [wordlist.Count]));
+
+  TextColor(LightGray);
   writeln('Type .help for available commands');
+
+  writeln('Filter by: starts with');
   writeln(format('Length: 3+  |  Limit: %d', [SearchLimit]));
 
   searchMode := SearchModeStartsWith;
