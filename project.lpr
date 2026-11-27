@@ -1,7 +1,7 @@
 program SpellbookTUI;
 
 uses
-  SysUtils, Classes, Math, Crt;
+  SysUtils, Classes, Math, Crt, Windows;
 
 const
   AppName = 'SpellbookTUI';
@@ -31,8 +31,16 @@ var
 begin
   writeln(format('Loading word list %s...', [WordListFile]));
 
-  if not FileExists(WordListFile) then
-    raise Exception.Create('Couldn''t find the word list!');
+  try
+    if not FileExists(WordListFile) then
+      raise Exception.Create(
+        format('Couldn''t find the word list %s!', [WordListFile]));
+  except
+    on e: Exception do begin
+      MessageBox(0, PChar(e.Message), 'Error', MB_OK or MB_ICONERROR);
+      halt(1)
+    end;
+  end;
 
   lines := TStringList.create;
   lines.LoadFromFile(WordListFile);
