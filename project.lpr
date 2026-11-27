@@ -73,9 +73,9 @@ begin
     '.help      list all the available commands' + LineEnding +
     '.clear     clear the screen' + LineEnding +
 
-    '.starts    filter words starting with' + LineEnding +
-    '.contains  filter words containing' + LineEnding +
-    '.ends      filter words ending with' + LineEnding +
+    '.starts    search by prefix' + LineEnding +
+    '.contains  search by substring' + LineEnding +
+    '.ends      search by suffix' + LineEnding +
 
     '.exit      exit this programme');
 end;
