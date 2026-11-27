@@ -29,3 +29,12 @@ SpellbookTUI uses the English word frequency list (count_1w.txt)
 made available by Peter Norvig
 
 The word list is not included in this distribution
+
+-- SOURCE CODE --
+
+https://github.com/Hevanafa/SpellbookTUI
+
+-- LICENCE --
+
+See the LICENSE.TXT file for details
+The software licence does not extend to the external word list
