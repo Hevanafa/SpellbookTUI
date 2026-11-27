@@ -14,13 +14,15 @@ SpellbookTUI currently requires Peter Norvig's English word frequency list, whic
 
 This app uses the `count_1w.txt` file
 
+You can place `count_1w.txt` in the same directory as `SpellbookTUI.exe`
+
 ## Building
 
 SpellbookTUI is a console app that can be built using either Lazarus or the standalone Free Pascal Compiler
 
 ### Lazarus IDE
 
-At least Lazarus IDE v4.6 (bundled with FPC 3.2.2) is required to build this app
+Developed and tested with Lazarus IDE v4.6 and FPC 3.2.2 in order to build this app
 
 1. Open `project.lpi` with Lazarus
 2. Select the **Release** build mode
