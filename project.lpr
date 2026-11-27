@@ -26,6 +26,12 @@ var
   searchMode: TSearchMode;
   wordlist: TStringList;
 
+
+function ExeRelative(const filename: string): string;
+begin
+  ExeRelative := ConcatPaths([ExtractFilePath(ParamStr(0)), filename])
+end;
+
 procedure LoadWordList;
 var
   fullPath: string;
@@ -37,7 +43,7 @@ begin
     User-facing path: use the plain WordListFile const
     Internal use: fullPath
   }
-  fullPath := ConcatPaths([ExtractFilePath(ParamStr(0)), WordListFile]);
+  fullPath := ExeRelative(WordListFile);
 
   writeln(format('Loading word list %s...', [WordListFile]));
 
