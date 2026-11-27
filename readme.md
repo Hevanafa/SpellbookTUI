@@ -4,6 +4,16 @@ A word search utility written in Free Pascal
 
 ![preview](./preview.png)
 
+## Getting started
+
+Download the ZIP file from [releases](https://github.com/Hevanafa/SpellbookTUI/releases/)
+
+In order for the app to work as for now, use Peter Norvig's ngram word list, which can be obtained from here:
+
+[https://www.norvig.com/ngrams/](https://www.norvig.com/ngrams/)
+
+This app specifically uses the `count_1w.txt`
+
 ## Building
 
 Since this app is mainly using the console/terminal, using either FPC itself or Lazarus can work
