@@ -28,23 +28,26 @@ var
 
 procedure LoadWordList;
 var
-  relativePath: string;
+  fullPath: string;
   lines: TStringList;
   line: string;
   pair: TStringArray;
 begin
   {
     User-facing path: use the plain WordListFile const
-    Internal use: relativePath
+    Internal use: fullPath
   }
-  relativePath := ConcatPaths([ExtractFilePath(ParamStr(0)), WordListFile]);
+  fullPath := ConcatPaths([ExtractFilePath(ParamStr(0)), WordListFile]);
 
   writeln(format('Loading word list %s...', [WordListFile]));
 
-  if not FileExists(relativePath) then begin
+  if not FileExists(fullPath) then begin
     MessageBox(
       0,
-      PChar(format('Couldn''t find the word list %s!', [WordListFile])),
+      PChar(Format(
+        'Couldn''t find %s. It must be in the same folder as the programme', [
+          WordListFile
+        ])),
       'Error',
       MB_OK or MB_ICONERROR);
 
@@ -52,7 +55,7 @@ begin
   end;
 
   lines := TStringList.create;
-  lines.LoadFromFile(relativePath);
+  lines.LoadFromFile(fullPath);
 
   for line in lines do begin
     pair := line.Split(#9);
