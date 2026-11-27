@@ -31,15 +31,14 @@ var
 begin
   writeln(format('Loading word list %s...', [WordListFile]));
 
-  try
-    if not FileExists(WordListFile) then
-      raise Exception.Create(
-        format('Couldn''t find the word list %s!', [WordListFile]));
-  except
-    on e: Exception do begin
-      MessageBox(0, PChar(e.Message), 'Error', MB_OK or MB_ICONERROR);
-      halt(1)
-    end;
+  if not FileExists(WordListFile) then begin
+    MessageBox(
+      0,
+      PChar(format('Couldn''t find the word list %s!', [WordListFile])),
+      'Error',
+      MB_OK or MB_ICONERROR);
+
+    Halt(1)
   end;
 
   lines := TStringList.create;
