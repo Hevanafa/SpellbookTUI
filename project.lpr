@@ -167,6 +167,8 @@ begin
 end;
 
 
+{$R *.res}
+
 begin
   WriteLn('Spellbook TUI - By Hevanafa (Nov 2026)');
 
