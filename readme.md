@@ -20,9 +20,9 @@ Enter a word or a search term to perform a search, enter `.help` to list the ava
 
 SpellbookTUI is a console app that can be built using either Lazarus or the standalone Free Pascal Compiler
 
-### Lazarus IDE
+Developed and tested with Lazarus IDE v4.6 and FPC 3.2.2
 
-Developed and tested with Lazarus IDE v4.6 and FPC 3.2.2 in order to build this app
+### Lazarus IDE
 
 1. Open `project.lpi` with Lazarus
 2. Select the **Release** build mode
