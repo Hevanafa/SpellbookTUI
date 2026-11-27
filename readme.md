@@ -6,15 +6,15 @@ A word search utility written in Free Pascal
 
 ## Getting started
 
-Download the ZIP file from the [Releases](https://github.com/Hevanafa/SpellbookTUI/releases/) page
+1. Download the ZIP file from the [Releases](https://github.com/Hevanafa/SpellbookTUI/releases/) page
+2. SpellbookTUI currently requires Peter Norvig's English word frequency list `count_1w.txt`, which can be obtained from here:
 
-SpellbookTUI currently requires Peter Norvig's English word frequency list, which can be obtained from here:
+   [https://www.norvig.com/ngrams/](https://www.norvig.com/ngrams/)
 
-[https://www.norvig.com/ngrams/](https://www.norvig.com/ngrams/)
+3. Place the word list `count_1w.txt` in the same directory as the exe
+4. Run `SpellbookTUI.exe`
 
-This app uses the `count_1w.txt` file
-
-You can place `count_1w.txt` in the same directory as `SpellbookTUI.exe`
+Enter a word or a search term to perform a search, enter `.help` to list the available commands
 
 ## Building
 
