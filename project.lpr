@@ -142,8 +142,16 @@ end;
 
 procedure PrintSearchSettings;
 begin
-  writeln('Filter by: starts with');
-  writeln(format('Length: %d+  |  Limit: %d', [SearchLimit]));
+  TextColor(LightGreen);
+  Write(UpperCase(GetSearchModeName(searchMode)));
+
+  TextColor(LightGray);
+  Write(
+    format('  |  Length: %d+  |  Limit: %d', [
+      MinWordLength, SearchLimit
+    ]));
+
+  writeln
 end;
 
 procedure MainLoop;
