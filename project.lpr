@@ -76,22 +76,29 @@ begin
   lines.Free
 end;
 
+
+function GetSearchModeName(const which: TSearchMode): string;
+begin
+  case which of
+    SearchModeStartsWith:
+      GetSearchModeName :=
+        'starts with';
+    SearchModeEndsWith:
+      GetSearchModeName :=
+        'ends with';
+    SearchModeContains:
+      GetSearchModeName :=
+        'contains';
+  end;
+end;
+
 procedure SetSearchMode(const value: TSearchMode);
 begin
   searchMode := value;
 
-  write('Search mode has been changed to: ');
-
-  case value of
-    SearchModeStartsWith:
-      write('starts with');
-    SearchModeEndsWith:
-      write('ends with');
-    SearchModeContains:
-      write('contains');
-  end;
-
-  writeln
+  writeln(
+    'Search mode has been changed to: '
+    + GetSearchModeName(value));
 end;
 
 procedure PrintHelpPage;
