@@ -14,6 +14,16 @@ const
   ItemsPerRow = 4;
   ColumnGap = 2;
 
+  AsciiArt: TStringArray = (
+    '  +     +   ',
+    '  ___  ___ +',
+    ' |   ||   | ',
+    '+|spe||bo | ',
+    ' | ll|| ok| ',
+    ' |   ||   | ',
+    ' |-==||==-| '
+  );
+
 type
   TSearchMode = (
     SearchModeStartsWith,
