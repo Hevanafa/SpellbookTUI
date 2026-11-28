@@ -290,7 +290,8 @@ begin
 
     case a of
       1: Write(format('%s v%s', [AppName, AppVersion]));
-      2: write('By Hevanafa (Nov 2026)');
+      2: write('Word Search Utility');
+      4: write('By Hevanafa (Nov 2026)');
     end;
 
     writeln
