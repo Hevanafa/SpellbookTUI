@@ -185,17 +185,19 @@ begin
     if prompt.StartsWith('.') then begin
       if prompt = '.exit' then
         done := true
+      else if prompt = '.clear' then begin
+        ClrScr;
+        continue
+      else if prompt = '.help' then
+        PrintHelpPage
+
       else if prompt = '.starts' then
         SetSearchMode(SearchModeStartsWith)
       else if prompt = '.ends' then
         SetSearchMode(SearchModeEndsWith)
       else if prompt = '.contains' then
         SetSearchMode(SearchModeContains)
-      else if prompt = '.help' then
-        PrintHelpPage
-      else if prompt = '.clear' then begin
-        ClrScr;
-        continue
+
       end else begin
         TextColor(DarkGray);
         WriteLn('Unknown command: ' + prompt);
