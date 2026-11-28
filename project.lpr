@@ -8,7 +8,7 @@ uses
 
 const
   AppName = 'SpellbookTUI';
-  AppVersion = '0.1';
+  AppVersion = '0.2';
   WordListFile = 'count_1w.txt';
   SearchLimit = 100;
   ItemsPerRow = 4;
