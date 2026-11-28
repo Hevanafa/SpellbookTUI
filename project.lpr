@@ -109,9 +109,13 @@ procedure SetSearchMode(const value: TSearchMode);
 begin
   searchMode := value;
 
-  writeln(
-    'Search mode has been changed to: '
-    + GetSearchModeName(value));
+  TextColor(white);
+  Write('Search mode has been changed to: ');
+
+  TextColor(LightGreen);
+  Write(GetSearchModeName(value));
+
+  WriteLn
 end;
 
 function FormatThousands(const value: longint): string;
@@ -324,8 +328,8 @@ begin
   writeln('Type .help for available commands');
 
   searchMode := SearchModeStartsWith;
-
   PrintSearchSettings;
+  WriteLn;
 
   MainLoop;
 
