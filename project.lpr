@@ -101,6 +101,15 @@ begin
     + GetSearchModeName(value));
 end;
 
+function FormatThousands(const value: longint): string;
+var
+  fs: TFormatSettings;
+begin
+  fs := DefaultFormatSettings;
+  fs.ThousandSeparator := ',';
+  FormatThousands := FormatFloat('#,##0', value, fs);
+end;
+
 procedure PrintHelpPage;
 begin
   TextColor(LightGray);
@@ -122,7 +131,7 @@ procedure MainLoop;
 var
   filtered: TStringList;
   prompt, s: string;
-  a, padding, limit: longint;
+  a, limit: longint;
   done: boolean;
   startHighlight, endHighlight: longint;
   longest: longint;
@@ -264,7 +273,7 @@ begin
   LoadWordList;
 
   TextColor(LightGreen);
-  writeln(format('Lexicon loaded: %d entries', [wordlist.Count]));
+  writeln(format('Lexicon loaded: %s entries', [FormatThousands(wordlist.Count)]));
 
   TextColor(LightGray);
   writeln('Type .help for available commands');
