@@ -136,6 +136,7 @@ begin
     LineEnding +
     '.help      list all the available commands' + LineEnding +
     '.clear     clear the screen' + LineEnding +
+    '.status    display the current search settings' + LineEnding +
     LineEnding +
     '.starts    search by prefix' + LineEnding +
     '.contains  search by substring' + LineEnding +
@@ -188,7 +189,7 @@ begin
       else if prompt = '.clear' then begin
         ClrScr;
         continue
-      else if prompt = '.help' then
+      end else if prompt = '.help' then
         PrintHelpPage
 
       else if prompt = '.starts' then
@@ -197,8 +198,10 @@ begin
         SetSearchMode(SearchModeEndsWith)
       else if prompt = '.contains' then
         SetSearchMode(SearchModeContains)
+      else if prompt = '.status' then
+        PrintSearchSettings
 
-      end else begin
+      else begin
         TextColor(DarkGray);
         WriteLn('Unknown command: ' + prompt);
       end;
