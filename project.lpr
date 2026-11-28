@@ -10,6 +10,8 @@ const
   AppName = 'SpellbookTUI';
   AppVersion = '0.2';
   WordListFile = 'count_1w.txt';
+
+  MinWordLength = 3;
   SearchLimit = 100;
   ItemsPerRow = 4;
   ColumnGap = 2;
@@ -136,6 +138,12 @@ begin
     '.ends      search by suffix' + LineEnding +
     LineEnding +
     '.exit      exit this programme');
+end;
+
+procedure PrintSearchSettings;
+begin
+  writeln('Filter by: starts with');
+  writeln(format('Length: %d+  |  Limit: %d', [SearchLimit]));
 end;
 
 procedure MainLoop;
@@ -307,10 +315,9 @@ begin
   TextColor(LightGray);
   writeln('Type .help for available commands');
 
-  writeln('Filter by: starts with');
-  writeln(format('Length: 3+  |  Limit: %d', [SearchLimit]));
-
   searchMode := SearchModeStartsWith;
+
+  PrintSearchSettings;
 
   MainLoop;
 
