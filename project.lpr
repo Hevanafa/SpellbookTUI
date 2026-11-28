@@ -56,6 +56,7 @@ begin
   }
   fullPath := ExeRelative(WordListFile);
 
+  TextColor(LightGray);
   writeln(format('Loading word list %s...', [WordListFile]));
 
   if not FileExists(fullPath) then begin
@@ -275,8 +276,25 @@ end;
 
 {$R *.res}
 
+var
+  a: longint;
 begin
-  WriteLn(format('%s v%s - By Hevanafa (Nov 2026)', [AppName, AppVersion]));
+  TextColor(LightGreen);
+
+  for a:=0 to high(AsciiArt) do begin
+    TextColor(LightGreen);
+    write(AsciiArt[a]);
+
+    TextColor(white);
+    write('  ');
+
+    case a of
+      1: Write(format('%s v%s', [AppName, AppVersion]));
+      2: write('By Hevanafa (Nov 2026)');
+    end;
+
+    writeln
+  end;
 
   wordlist := TStringList.create;
 
